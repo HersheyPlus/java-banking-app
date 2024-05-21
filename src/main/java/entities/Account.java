@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import static Helper.generateRandom.*;
 public class Account {
     private final String id;
-    private final int accountId;
+    private final String accountId;
     private String accountPassword;
     private double balance;
     private String accountName;
-    private ArrayList<TransactionLog> allTransactionLogs = new ArrayList<>();
+    private final ArrayList<TransactionLog> allTransactionLogs = new ArrayList<>();
 
     public Account (String accountName, String accountPassword,double balance) {
         if (accountName.isBlank() || accountPassword.isBlank() || accountPassword.length() < 6 || balance <= 0) {
@@ -30,11 +30,13 @@ public class Account {
 
     @Override
     public String toString() {
-        return String.format("Account(id:%s, accountId:%d, name:%s, password:%s, balance:%.2f)",id,accountId,
-                accountName,accountPassword,balance);
+        return String.format("Account(id:%s, accountId:%s, name:%s, password:%s, balance:%.2f, number of " +
+                        "transaction:%d)",id,
+                accountId,
+                accountName,accountPassword,balance,getTransactionSize());
     }
 
-    public int getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 
@@ -70,10 +72,12 @@ public class Account {
         allTransactionLogs.add(new TransactionLog("WITHDRAW",amount));
         return true;
     }
+
     public int getTransactionSize(){
         return allTransactionLogs.size();
     }
     public ArrayList<TransactionLog> getAllTransactionLogs() {
         return allTransactionLogs;
     }
+
 }

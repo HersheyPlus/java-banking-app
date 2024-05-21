@@ -1,4 +1,7 @@
 import entities.Account;
+import entities.TransactionLog;
+
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Account ac1 = new Account("Bomb","1234567",500);
@@ -16,5 +19,6 @@ public class Main {
         System.out.println("Transaction current size: " + ac1.getTransactionSize());
         System.out.println("After deposit and withdraw: " + ac1.getBalance());
         System.out.println(ac1.getAllTransactionLogs());
+        System.out.println(ac1);
     }
 }
