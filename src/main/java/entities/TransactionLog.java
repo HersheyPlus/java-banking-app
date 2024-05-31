@@ -1,7 +1,9 @@
 package entities;
+import java.io.Serializable;
+
 import static Helper.generateRandom.generateTransactionId;
 
-public class TransactionLog {
+public class TransactionLog implements Serializable {
     private final String transactionId;
     private final String log;
     private final double amount;
